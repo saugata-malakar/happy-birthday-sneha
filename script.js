@@ -11,7 +11,7 @@ const PHOTOS_DATA = [
   {
     "id": 1,
     "file": "IMG-20261023-WA0006.jpg",
-    "category": "saree",
+    "category": "festive",
     "title_en": "That Tiny Nose Ring!",
     "caption_en": "Every time I look at this picture, I fall in love all over again. That delicate little nose ring and those shy, sparkling eyes... Sneha, you are truly lethal!",
     "title_bn": "তোর ওই একরত্তি নাকছাবি!",
@@ -182,11 +182,11 @@ const PHOTOS_DATA = [
   {
     "id": 20,
     "file": "IMG-20261023-WA0024.jpg",
-    "category": "saree",
-    "title_en": "Black Bindi & Saree Perfection",
-    "caption_en": "A traditional saree and a tiny black bindi on your forehead... you have no idea the butterflies you give me when you look like this.",
-    "title_bn": "কপালে ছোট্ট কালো টিপ",
-    "caption_bn": "শাড়ি আর কপালে কালো টিপ—তুই যখন এভাবে সাজিস, বিশ্বাস কর আমার বুকের ভেতর তোলপাড় শুরু হয়ে যায়!"
+    "category": "candid",
+    "title_en": "Casual Elegance & Sweet Smile",
+    "caption_en": "That stylish black embroidered top, your radiant smile, and the effortless grace you carry... you don't even need a saree to steal my heart completely!",
+    "title_bn": "কালো কুর্তিতে স্নিগ্ধ সাজ",
+    "caption_bn": "কালো কুর্তি আর মিষ্টি হাসিতে তুই এক কথায় দারুণ! কোনো বিশেষ সাজগোজ ছাড়াই তোর এই সহজ-সরল রূপটা আমার মন ভালো করে দেয়।"
   },
   {
     "id": 21,

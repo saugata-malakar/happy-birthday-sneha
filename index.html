@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Happy Birthday Sneha ❤️ | My Queen's Special Day</title>
+  <meta name="description" content="A magical, handcrafted birthday celebration website for Sneha with love, memories, traditional saree moments, and interactive surprises.">
+  
+  <!-- Google Fonts: English Romantic & Bengali Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Galada&family=Hind+Siliguri:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,800;1,600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Ambient Audio & Sound FX Controller -->
+  <aside class="audio-controller" id="audio-widget" aria-label="Music and Sound Controls">
+    <button id="music-toggle-btn" class="music-disc-btn" title="Toggle Romantic Melody">
+      <span class="disc-icon">🎵</span>
+      <span class="music-wave">
+        <i></i><i></i><i></i><i></i>
+      </span>
+    </button>
+    <div class="audio-panel" id="audio-panel">
+      <div class="audio-panel-header">
+        <span class="music-label" data-en="Romantic Melody 🎶" data-bn="রোমান্টিক সুর 🎶">Romantic Melody 🎶</span>
+        <span class="music-status" id="music-status" data-en="Playing" data-bn="বাজছে">Playing</span>
+      </div>
+      <div class="audio-controls">
+        <button id="sound-fx-toggle" class="fx-btn active" title="Toggle Sound Effects" data-en="🔔 Sound FX: ON" data-bn="🔔 সাউন্ড FX: অন">🔔 Sound FX: ON</button>
+        <label for="custom-audio-input" class="custom-audio-label">
+          <span data-en="📁 Add Your Own Song" data-bn="📁 নিজের গান যোগ করুন">📁 Add Your Own Song</span>
+          <input type="file" id="custom-audio-input" accept="audio/*">
+        </label>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Global Navigation Header -->
+  <header class="app-header">
+    <div class="header-content">
+      <div class="brand-tag">
+        <span class="crown-icon">👑</span>
+        <span class="brand-text">Happy Birthday <strong>Sneha</strong></span>
+      </div>
+      <!-- Stage Progress Steps -->
+      <nav class="stage-nav" aria-label="Stages">
+        <button class="nav-step active" data-step="1" title="Surprise Box">
+          <span class="step-num" data-en="1" data-bn="১">1</span>
+          <span class="step-title" data-en="Surprise" data-bn="সারপ্রাইজ">Surprise</span>
+        </button>
+        <button class="nav-step" data-step="2" title="Cupid's Bow">
+          <span class="step-num" data-en="2" data-bn="২">2</span>
+          <span class="step-title" data-en="Cupid's Bow" data-bn="তীরবিদ্ধ মন">Cupid's Bow</span>
+        </button>
+        <button class="nav-step" data-step="3" title="Photo Vault">
+          <span class="step-num" data-en="3" data-bn="৩">3</span>
+          <span class="step-title" data-en="Photo Vault" data-bn="রূপের ডালি">Photo Vault</span>
+        </button>
+        <button class="nav-step" data-step="4" title="Cute Games">
+          <span class="step-num" data-en="4" data-bn="৪">4</span>
+          <span class="step-title" data-en="Cute Games" data-bn="মজার গেম">Cute Games</span>
+        </button>
+        <button class="nav-step" data-step="5" title="Cake Cutting">
+          <span class="step-num" data-en="5" data-bn="৫">5</span>
+          <span class="step-title" data-en="Cake Cutting" data-bn="কেক কাটিং">Cake Cutting</span>
+        </button>
+        <button class="nav-step" data-step="6" title="Love Letter">
+          <span class="step-num" data-en="6" data-bn="৬">6</span>
+          <span class="step-title" data-en="Love Letter" data-bn="প্রেমপত্র">Love Letter</span>
+        </button>
+      </nav>
+      <!-- Quick Stage Counter & Language Switcher -->
+      <div class="header-right-tools">
+        <button class="lang-toggle-btn" id="lang-toggle-btn" title="Toggle English / বাংলা">
+          <span class="lang-flag">🌐</span>
+          <span id="lang-label">বাংলা</span>
+        </button>
+        <div class="stage-indicator">
+          <span id="current-step-label">1</span> / 6
+        </div>
+      </div>
+    </div>
+    <!-- Top Progress Bar -->
+    <div class="progress-bar-container">
+      <div class="progress-bar-fill" id="progress-bar"></div>
+    </div>
+  </header>
+
+  <!-- Dynamic Ambient Animated Photo Collage Stream (Drifting Upward with Rotating Cards) -->
+  <div class="ambient-photo-mosaic" id="ambient-mosaic" aria-hidden="true">
+    <div class="collage-stream-container" id="collage-streams"></div>
+    <div class="ambient-overlay"></div>
+    <canvas id="particles-canvas"></canvas>
+  </div>
+
+  <!-- Fullscreen Particle Effects (Confetti & Hearts) -->
+  <canvas id="effects-canvas" class="fullscreen-canvas"></canvas>
+
+  <!-- MAIN MULTI-STAGE CONTAINER -->
+  <main class="story-wrapper" id="story-wrapper">
+
+    <!-- ================= STAGE 1: THE ROYAL INVITATION & GIFT BOX ================= -->
+    <section class="stage-screen active" id="stage-1" data-index="1">
+      <div class="stage-inner royal-entry">
+        <div class="entry-card glass-panel glow-card">
+          <div class="alpona-border-top"></div>
+          
+          <div class="sub-header-pill" data-en="✨ October 23rd • Happy Birthday My Queen ✨" data-bn="✨ ২৩শে অক্টোবর • আমার রাজকন্যার শুভ জন্মদিন ✨">
+            ✨ October 23rd • Happy Birthday My Queen ✨
+          </div>
+          
+          <h1 class="main-bengali-title">
+            <span data-en="Happy Birthday" data-bn="শুভ জন্মদিন">Happy Birthday</span> 
+            <span class="highlight-name">Sneha</span>! ❤️
+          </h1>
+          <p class="bengali-subtitle" data-en="To my sweetest <strong class='nickname-badge'>“Sneha”</strong>, I've poured all my love into crafting this magical universe just for you..." data-bn="আমার আদরের <strong class='nickname-badge'>“স্নেহা”</strong>, তোর এই বিশেষ দিনটাতে আমার সমস্ত ভালোবাসা দিয়ে সাজিয়েছি তোর জন্য এই ছোট্ট সারপ্রাইজ...">
+            To my sweetest <strong class="nickname-badge">“Sneha”</strong>, I've poured all my love into crafting this magical universe just for you...
+          </p>
+
+          <!-- 3D Interactive Royal Gift Box / Wax Envelope -->
+          <div class="gift-box-wrapper" id="gift-box-container">
+            <div class="royal-gift-box" id="royal-gift-box">
+              <div class="box-lid" id="box-lid">
+                <div class="lid-ribbon-h"></div>
+                <div class="lid-ribbon-v"></div>
+                <div class="golden-bow">🎀</div>
+              </div>
+              <div class="box-body">
+                <div class="box-ribbon-h"></div>
+                <div class="box-ribbon-v"></div>
+                <div class="box-front-badge">
+                  <span class="heart-pulse">❤️</span>
+                  <span class="badge-text" data-en="For My Sneha" data-bn="For My Sneha">For My Sneha</span>
+                </div>
+              </div>
+              <!-- Floating Sparkles around box -->
+              <div class="box-sparkle s1">✨</div>
+              <div class="box-sparkle s2">🌸</div>
+              <div class="box-sparkle s3">💖</div>
+            </div>
+
+            <p class="tap-hint-text">
+              <span class="finger-tap-icon">👆</span> 
+              <span data-en="Tap the gift box to unlock your surprise!" data-bn="উপহারের বক্সে ট্যাপ করিস তো, দেখি কী আছে ভেতরে!">Tap the gift box to unlock your surprise!</span>
+            </p>
+          </div>
+
+          <div class="entry-footer-quote" data-en="“After the longest of exhausting days, your gentle smile is the only reason my world keeps spinning...”" data-bn="“সারাদিনের হাজারো ক্লান্তির পর, তোর ওই এক চিলতে মিষ্টি হাসিটাই আমার বেঁচে থাকার রসদ...”">
+            “After the longest of exhausting days, your gentle smile is the only reason my world keeps spinning...”
+          </div>
+
+          <div class="stage-actions">
+            <button class="btn btn-primary btn-sparkle" id="start-journey-btn">
+              <span data-en="Begin Our Journey ❤️" data-bn="চল শুরু করা যাক ❤️">Begin Our Journey ❤️</span>
+              <span class="arrow-right-icon">➔</span>
+            </button>
+          </div>
+
+          <div class="alpona-border-bottom"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= STAGE 2: CUPID ARROW & BEATING HEART SHATTER ================= -->
+    <section class="stage-screen" id="stage-2" data-index="2">
+      <div class="stage-inner arrow-stage-content">
+        <div class="arrow-header text-center">
+          <span class="badge-tag" data-en="Heartstrings 💘" data-bn="হৃদয়ের টান 💘">Heartstrings 💘</span>
+          <h2 class="section-title" data-en="Struck By Cupid's Arrow!" data-bn="তীর তো লেগেছে বহু আগেই!">Struck By Cupid's Arrow!</h2>
+          <p class="section-desc" data-en="Truth is, my heart was struck the very second I first laid eyes on you... Release Cupid's arrow and unlock the secret!" data-bn="তোর ওই এক পলকের মিষ্টি চাহনিই যথেষ্ট ছিল আমার মন চুরি করার জন্য... চল তীর ছুঁড়ে হৃদয়টা খুলে দেখ!">
+            Truth is, my heart was struck the very second I first laid eyes on you... Release Cupid's arrow and unlock the secret!
+          </p>
+        </div>
+
+        <!-- The Interactive Heart & Arrow Arena -->
+        <div class="cupid-arena" id="cupid-arena">
+          <!-- The Cupid Archer / Bow -->
+          <div class="cupid-bow-container" id="cupid-bow">
+            <div class="bow-svg-wrap">
+              <svg viewBox="0 0 100 160" class="bow-icon">
+                <path d="M 10 10 C 80 80, 80 80, 10 150" fill="none" stroke="#f5af19" stroke-width="6" stroke-linecap="round"/>
+                <line x1="10" y1="10" x2="10" y2="150" stroke="#fff" stroke-dasharray="3,3" stroke-width="2"/>
+              </svg>
+            </div>
+            <div class="arrow-projectile" id="arrow-projectile">
+              <div class="arrow-shaft"></div>
+              <div class="arrow-head"></div>
+              <div class="arrow-feather"></div>
+              <div class="arrow-sparkle-trail"></div>
+            </div>
+          </div>
+
+          <!-- The Beating Heart Target -->
+          <div class="heart-target-wrapper" id="heart-target-wrapper">
+            <div class="giant-beating-heart" id="giant-heart">
+              <div class="heart-left-half" id="heart-left"></div>
+              <div class="heart-right-half" id="heart-right"></div>
+              <div class="heart-pulse-glow"></div>
+              <div class="heart-center-text">
+                <span data-en="Sneha" data-bn="স্নেহা">Sneha</span>
+                <small data-en="My Sneha ❤️" data-bn="আমার স্নেহা ❤️">My Sneha ❤️</small>
+              </div>
+            </div>
+
+            <!-- Revealed Radiant Photo Frame (Hidden until arrow hits) -->
+            <div class="revealed-hero-portrait" id="revealed-portrait">
+              <div class="portrait-glow-ring"></div>
+              <div class="portrait-img-box">
+                <img src="./IMG-20261023-WA0006.jpg" alt="Sneha Traditional Saree" id="hero-reveal-img">
+              </div>
+              <div class="portrait-caption-pill">
+                <span data-en="👑 My Stunning Queen in Traditional Saree! 👑" data-bn="👑 এই তো আমার শাড়ি পরা অপরূপা স্নেহা! 👑">
+                  👑 My Stunning Queen in Traditional Saree! 👑
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Interactive Trigger Button -->
+        <div class="arrow-controls text-center">
+          <button class="btn btn-golden btn-shoot" id="shoot-arrow-btn">
+            <span data-en="💘 Release Cupid's Arrow! (Shoot Arrow)" data-bn="💘 প্রেমের তীর ছুঁড়ে দে! (Shoot Arrow)">💘 Release Cupid's Arrow! (Shoot Arrow)</span>
+          </button>
+          <button class="btn btn-secondary btn-reset hidden" id="reset-arrow-btn">
+            <span data-en="🔄 Shoot Again?" data-bn="🔄 আবার তীর ছুঁড়বি?">🔄 Shoot Again?</span>
+          </button>
+        </div>
+
+        <!-- Romantic Lines Revealed -->
+        <div class="arrow-love-text glass-panel hidden" id="arrow-love-msg">
+          <h3 class="love-quote-headline" data-en="“Written permanently upon my heart—Sneha...”" data-bn="“হৃদয়ের দেওয়ালে একটাই নাম খোদাই করা—স্নেহা...”">
+            “Written permanently upon my heart—Sneha...”
+          </h3>
+          <p class="love-quote-body" data-en="You know, Sneha, the very first time I saw you draped in a traditional saree, my heart completely stopped. That sparkling little nose ring, the jhumkas swaying with every step, and the delicate flutter of your pallu... you looked like poetry brought to life. On your birthday, no fairytales needed—I just want to speak the raw truth: you are the greatest blessing of my entire life. All my love, today and forever, to my queen! 🌹" data-bn="জানিস স্নেহা, যেদিন তোকে প্রথম শাড়িতে দেখেছিলাম, সত্যি বলছি আমার চোখ ফেরানোর সাধ্য ছিল না! কানের ওই মিষ্টি ঝুমকো, ছোট্ট নাকছাবি আর শাড়ির আঁচল জড়িয়ে যখন তুই হেঁটে আসছিলি—মনে হয়েছিল গোটা পৃথিবীর সমস্ত মায়া ঈশ্বর কেবল তোর জন্যই জমিয়ে রেখেছিলেন। তোর জন্মদিনে কোনো রূপকথার গল্প নয়, মনের খাঁটি সত্যিটা বলতে চাই—তুই আমার জীবনের সেরা পাওয়া! অনেক অনেক আদর আর ভালোবাসা আমার রানিকে! 🌹">
+            You know, Sneha, the very first time I saw you draped in a traditional saree, my heart completely stopped. That sparkling little nose ring, the jhumkas swaying with every step, and the delicate flutter of your pallu... you looked like poetry brought to life. On your birthday, no fairytales needed—I just want to speak the raw truth: you are the greatest blessing of my entire life. All my love, today and forever, to my queen! 🌹
+          </p>
+        </div>
+
+        <div class="stage-nav-buttons">
+          <button class="btn btn-outline nav-prev" data-prev="1" data-en="⬅ Previous Stage" data-bn="⬅ আগের পৃষ্ঠা">⬅ Previous Stage</button>
+          <button class="btn btn-primary nav-next" data-next="3" data-en="Next Surprise: Photo Vault ➡" data-bn="পরের সারপ্রাইজ: রূপের ডালি ➡">Next Surprise: Photo Vault ➡</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= STAGE 3: TRADITIONAL SAREE GALLERY & POLAROID WALL ================= -->
+    <section class="stage-screen" id="stage-3" data-index="3">
+      <div class="stage-inner gallery-stage">
+        <div class="gallery-header text-center">
+          <span class="badge-tag" data-en="Treasured Moments 🌺" data-bn="রূপের ডালি 🌺">Treasured Moments 🌺</span>
+          <h2 class="section-title" data-en="Elegance, Sarees & My Gorgeous Sneha" data-bn="শাড়ির ভাঁজে লুকিয়ে থাকা আমার রূপসী স্নেহা">
+            Elegance, Sarees & My Gorgeous Sneha
+          </h2>
+          <p class="section-desc" data-en="Every stolen glance, every adorable pout, and your breathtaking saree moments... Tap any photo to read the note!" data-bn="তোর প্রতিটা হাসির মুহূর্ত, প্রতিটা মিষ্টি পাউট আর শাড়ির মায়াবী সাজ... ছুঁয়ে দেখ প্রতিটা স্মৃতি!">
+            Every stolen glance, every adorable pout, and your breathtaking saree moments... Tap any photo to read the note!
+          </p>
+          
+          <!-- Category Tabs -->
+          <div class="gallery-tabs">
+            <button class="tab-btn active" data-filter="all" data-en="All Memories (35)" data-bn="সব স্মৃতি (All 35)">All Memories (35)</button>
+            <button class="tab-btn" data-filter="saree" data-en="Saree Magic 🌺" data-bn="শাড়ির জাদু (Saree Magic 🌺)">Saree Magic 🌺</button>
+            <button class="tab-btn" data-filter="candid" data-en="Cute & Candid 😘" data-bn="মিষ্টি দুষ্টুমি (Cute Candid 😘)">Cute & Candid 😘</button>
+            <button class="tab-btn" data-filter="festive" data-en="Festive Glow ✨" data-bn="উৎসবে আলো (Festive Glow ✨)">Festive Glow ✨</button>
+            <button class="tab-btn" data-filter="polaroid" data-en="3D Polaroid Stack 📸" data-bn="পোলাৰয়েড ডেক (3D Stack 📸)">3D Polaroid Stack 📸</button>
+          </div>
+        </div>
+
+        <!-- 3D Polaroid Stack Mode (Interactive Deck) -->
+        <div class="polaroid-deck-container hidden" id="polaroid-deck-view">
+          <div class="deck-controls">
+            <button class="btn btn-sm btn-outline" id="deck-prev-btn" data-en="◀ Previous Memory" data-bn="◀ আগের স্মৃতি">◀ Previous Memory</button>
+            <span class="deck-counter" id="deck-counter">1 / 35</span>
+            <button class="btn btn-sm btn-primary" id="deck-next-btn" data-en="Next Memory ▶" data-bn="পরের স্মৃতি ▶">Next Memory ▶</button>
+          </div>
+          <div class="polaroid-stage" id="polaroid-stage">
+            <!-- Dynamic cards injected via JS -->
+          </div>
+          <p class="polaroid-hint" data-en="💡 Tap the card or buttons to flip through our memories!" data-bn="💡 ছবিতে ক্লিক কর অথবা টেনে পরের স্মৃতিতে যা!">
+            💡 Tap the card or buttons to flip through our memories!
+          </p>
+        </div>
+
+        <!-- Standard Masonry / Mosaic Grid View -->
+        <div class="photo-masonry-grid" id="photo-masonry-grid">
+          <!-- All 35+ photos rendered dynamically via JS -->
+        </div>
+
+        <div class="stage-nav-buttons">
+          <button class="btn btn-outline nav-prev" data-prev="2" data-en="⬅ Previous Stage" data-bn="⬅ আগের পৃষ্ঠা">⬅ Previous Stage</button>
+          <button class="btn btn-primary nav-next" data-next="4" data-en="Next Surprise: Cute Games ➡" data-bn="পরের সারপ্রাইজ: মজার গেম ➡">Next Surprise: Cute Games ➡</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= STAGE 4: CUTE MINI-GAMES & LOVE LAB ================= -->
+    <section class="stage-screen" id="stage-4" data-index="4">
+      <div class="stage-inner games-stage">
+        <div class="games-header text-center">
+          <span class="badge-tag" data-en="Sneha's Play Zone 🎮" data-bn="গুলুর স্পেশাল গেমস 🎮">Sneha's Play Zone 🎮</span>
+          <h2 class="section-title" data-en="Sweet Mini-Games for My Sneha!" data-bn="আমার স্নেহার জন্য মিষ্টি গেমস!">Sweet Mini-Games for My Sneha!</h2>
+          <p class="section-desc" data-en="A little fun, a little drama, and tons of sweet surprises hidden inside!" data-bn="একটু মজা, একটু দুষ্টুমি আর তোর জন্য অনেকগুলো ভালোবাসার সারপ্রাইজ লুকিয়ে আছে এখানে!">
+            A little fun, a little drama, and tons of sweet surprises hidden inside!
+          </p>
+          
+          <div class="game-selector-pills">
+            <button class="game-tab-btn active" data-game="catcher" data-en="1. Jhumka & Heart Catcher 🧺" data-bn="১. ঝুমকো ও লাভ ক্যাচার 🧺">1. Jhumka & Heart Catcher 🧺</button>
+            <button class="game-tab-btn" data-game="scratch" data-en="2. Secret Scratch Card 🪙" data-bn="২. সিক্রেট স্ক্র্যাচ কার্ড 🪙">2. Secret Scratch Card 🪙</button>
+            <button class="game-tab-btn" data-game="meter" data-en="3. Sneha Love Scanner 💯" data-bn="৩. স্নেহা লাভ স্ক্যানার 💯">3. Sneha Love Scanner 💯</button>
+          </div>
+        </div>
+
+        <!-- GAME 1: CATCH THE HEARTS & JHUMKAS -->
+        <div class="game-panel active" id="game-catcher-panel">
+          <div class="catcher-game-wrapper">
+            <div class="game-scoreboard">
+              <div class="score-item">
+                <span class="score-label" data-en="Score:" data-bn="পয়েন্ট:">Score:</span>
+                <span class="score-value" id="catcher-score">0</span>
+              </div>
+              <div class="score-item">
+                <span class="score-label" data-en="Compliments:" data-bn="আনলকড কমপ্লিমেন্ট:">Compliments:</span>
+                <span class="score-value" id="compliments-unlocked">0 / 5</span>
+              </div>
+              <div class="game-actions-bar">
+                <button class="btn btn-xs btn-golden" id="start-catcher-btn" data-en="▶ Start Game" data-bn="▶ গেম শুরু করো">▶ Start Game</button>
+                <button class="btn btn-xs btn-outline" id="pause-catcher-btn" data-en="⏸ Pause" data-bn="⏸ একটু থাম">⏸ Pause</button>
+              </div>
+            </div>
+
+            <!-- Canvas Game Arena -->
+            <div class="catcher-arena-container" id="catcher-arena-container">
+              <canvas id="catcher-canvas" width="600" height="420"></canvas>
+              <div class="catcher-mobile-controls">
+                <button class="touch-control-btn" id="ctrl-left" data-en="◀ Left" data-bn="◀ বাঁয়ে">◀ Left</button>
+                <span class="touch-hint" data-en="Drag basket or tap buttons left & right!" data-bn="বাস্কেটটা ডানে-বাঁয়ে টানুন বা বাটন চাপুন">Drag basket or tap buttons left & right!</span>
+                <button class="touch-control-btn" id="ctrl-right" data-en="Right ▶" data-bn="ডানে ▶">Right ▶</button>
+              </div>
+            </div>
+
+            <!-- Unlocked Compliments Marquee -->
+            <div class="unlocked-toast-box" id="catcher-toast">
+              <span class="toast-icon">🎁</span>
+              <span class="toast-msg" id="catcher-toast-text" data-en="Catch falling jhumkas and hearts to unlock sweet compliments!" data-bn="ঝুড়িটা ডানে-বাঁয়ে সরিয়ে ঝুমকো আর হার্টগুলো ধর!">
+                Catch falling jhumkas and hearts to unlock sweet compliments!
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- GAME 2: SCRATCH CARD -->
+        <div class="game-panel hidden" id="game-scratch-panel">
+          <div class="scratch-card-wrapper text-center">
+            <p class="scratch-instruction" data-en="🪙 Use your finger or coin to scratch off the silver foil and reveal your secret love note!" data-bn="🪙 আঙুল বা কয়েন দিয়ে সাবধানে ঘষে দেখ তো ভেতরে কী লিখে রেখেছি তোর জন্য!">
+              🪙 Use your finger or coin to scratch off the silver foil and reveal your secret love note!
+            </p>
+            <div class="scratch-container">
+              <!-- Underneath secret content -->
+              <div class="scratch-secret-content">
+                <img src="./IMG-20261023-WA0019.jpg" alt="Sneha Secret Saree" class="scratch-bg-img">
+                <div class="scratch-secret-text" id="scratch-secret-en">
+                  <h3>To My Favorite Human Being ❤️</h3>
+                  <p>“Nobody has ever understood me the way you do, Sneha. I want to spend a hundred lifetimes getting lost in your eyes. Your smile is my sunrise, and your arms are my only home...”</p>
+                  <span class="scratch-love-tag">Forever & Always Yours 💍</span>
+                </div>
+                <div class="scratch-secret-text hidden" id="scratch-secret-bn">
+                  <h3>আমার সবচেয়ে প্রিয় মানুষটা ❤️</h3>
+                  <p>“তোর মতো করে আমায় কেউ কখনো বোঝেনি স্নেহা। হাজার বছর ধরে আমি এই চোখে চোখ রেখে বাঁচতে চাই। তোর হাসিতেই আমার সকাল, আর তোর বুকেই আমার রাতের শান্তি...”</p>
+                  <span class="scratch-love-tag">চিরকাল শুধুই তোর 💍</span>
+                </div>
+              </div>
+              <!-- Scratchable silver canvas -->
+              <canvas id="scratch-canvas" width="380" height="260"></canvas>
+            </div>
+            <button class="btn btn-golden btn-sm mt-3" id="reset-scratch-btn" data-en="🔄 Scratch Again?" data-bn="🔄 আবার ঘষবি?">🔄 Scratch Again?</button>
+          </div>
+        </div>
+
+        <!-- GAME 3: LOVE METER -->
+        <div class="game-panel hidden" id="game-meter-panel">
+          <div class="meter-card glass-panel text-center">
+            <div class="meter-dial-box">
+              <div class="heart-scanner-icon" id="scanner-icon">💖</div>
+              <div class="meter-percentage" id="meter-score">0%</div>
+              <div class="meter-bar-track">
+                <div class="meter-bar-fill" id="meter-fill"></div>
+              </div>
+            </div>
+            <h3 class="meter-status-title" id="meter-title" data-en="The Ultimate Love Scanner!" data-bn="ভালোবাসার পারদ পরীক্ষা!">The Ultimate Love Scanner!</h3>
+            <p class="meter-desc" id="meter-verdict" data-en="Press the button below to scan just how deeply my heart beats for you! (Spoiler: Warning, system overload guaranteed!)" data-bn="নিচের বাটনে চাপ দিয়ে দেখে নে—আমার বুকে তোর জন্য কতটা ভালোবাসা জমে আছে! (spoiler: ১০০% এর অনেক বেশি ছাড়া কোনো অপশন নেই!)">
+              Press the button below to scan just how deeply my heart beats for you! (Spoiler: Warning, system overload guaranteed!)
+            </p>
+            <button class="btn btn-primary btn-sparkle" id="calculate-love-btn" data-en="⚡ Scan Love Meter Now 💖" data-bn="⚡ ভালোবাসা পরীক্ষা করো (Scan Now) 💖">
+              ⚡ Scan Love Meter Now 💖
+            </button>
+          </div>
+        </div>
+
+        <div class="stage-nav-buttons">
+          <button class="btn btn-outline nav-prev" data-prev="3" data-en="⬅ Previous Stage" data-bn="⬅ আগের পৃষ্ঠা">⬅ Previous Stage</button>
+          <button class="btn btn-primary nav-next" data-next="5" data-en="Next Surprise: Cake Cutting ➡" data-bn="পরের সারপ্রাইজ: কেক কাটিং ➡">Next Surprise: Cake Cutting ➡</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= STAGE 5: INTERACTIVE BIRTHDAY CAKE & CANDLE BLOW ================= -->
+    <section class="stage-screen" id="stage-5" data-index="5">
+      <div class="stage-inner cake-stage">
+        <div class="cake-header text-center">
+          <span class="badge-tag" data-en="Celebration Time 🎂" data-bn="শুভ জন্মদিন 🎂">Celebration Time 🎂</span>
+          <h2 class="section-title" data-en="Time to Make a Wish & Cut the Cake!" data-bn="এবার মোমবাতি নিভিয়ে কেক কাটার পালা!">Time to Make a Wish & Cut the Cake!</h2>
+          <p class="section-desc" data-en="Close your eyes, make a sweet wish, blow out the glowing candles, and let's celebrate your day!" data-bn="চোখ বন্ধ করে একটা মিষ্টি উইশ কর, তারপর মোমবাতিতে ফুঁ দে আর কেকটা কেটে নে!">
+            Close your eyes, make a sweet wish, blow out the glowing candles, and let's celebrate your day!
+          </p>
+        </div>
+
+        <!-- The 3D Birthday Cake Interaction -->
+        <div class="cake-ceremony-wrapper" id="cake-ceremony-area">
+          <div class="birthday-cake-3d" id="birthday-cake">
+            <!-- Candles on top -->
+            <div class="candles-rack">
+              <div class="candle c1" data-id="1">
+                <div class="flame" id="flame-1"></div>
+                <div class="smoke" id="smoke-1"></div>
+                <div class="candle-stick"></div>
+              </div>
+              <div class="candle c2" data-id="2">
+                <div class="flame" id="flame-2"></div>
+                <div class="smoke" id="smoke-2"></div>
+                <div class="candle-stick"></div>
+              </div>
+              <div class="candle c3" data-id="3">
+                <div class="flame" id="flame-3"></div>
+                <div class="smoke" id="smoke-3"></div>
+                <div class="candle-stick"></div>
+              </div>
+              <div class="candle c4" data-id="4">
+                <div class="flame" id="flame-4"></div>
+                <div class="smoke" id="smoke-4"></div>
+                <div class="candle-stick"></div>
+              </div>
+              <div class="candle c5" data-id="5">
+                <div class="flame" id="flame-5"></div>
+                <div class="smoke" id="smoke-5"></div>
+                <div class="candle-stick"></div>
+              </div>
+            </div>
+
+            <!-- Cake Tier 1 (Top) -->
+            <div class="cake-tier tier-top">
+              <div class="frosting-cream"></div>
+              <div class="tier-topping">🍓 🍫 🍒 🍓</div>
+            </div>
+
+            <!-- Cake Tier 2 (Middle) -->
+            <div class="cake-tier tier-mid">
+              <div class="frosting-drippings"></div>
+              <div class="cake-bengali-banner">
+                <span data-en="Happy Birthday Sneha ❤️" data-bn="শুভ জন্মদিন স্নেহা ❤️">Happy Birthday Sneha ❤️</span>
+              </div>
+            </div>
+
+            <!-- Cake Tier 3 (Base) -->
+            <div class="cake-tier tier-base">
+              <div class="frosting-base"></div>
+              <div class="tier-decoration">✨ 💖 🌸 💖 ✨</div>
+            </div>
+
+            <!-- Cake Stand & Plate -->
+            <div class="cake-stand"></div>
+
+            <!-- Interactive Cake Knife (appears after candle blow) -->
+            <div class="cake-knife hidden" id="cake-knife">
+              <div class="knife-handle"></div>
+              <div class="knife-blade"></div>
+            </div>
+
+            <!-- Sliced Cake Piece (animates outward) -->
+            <div class="cake-slice-piece hidden" id="cake-slice-piece">
+              <span data-en="🍰 The very first sweet bite is exclusively for my Sneha!" data-bn="🍰 নে, প্রথম কামড়টা শুধুই আমার স্নেহার মুখে!">🍰 The very first sweet bite is exclusively for my Sneha!</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cake Controls -->
+        <div class="cake-controls text-center">
+          <div class="action-btn-group" id="candle-actions">
+            <button class="btn btn-golden btn-sparkle" id="blow-candles-btn">
+              <span data-en="💨 Blow Out the Candles!" data-bn="💨 মোমবাতিগুলোতে ফুঁ দে! (Blow Candles)">💨 Blow Out the Candles!</span>
+            </button>
+            <p class="candle-hint" data-en="💡 You can also tap each candle directly to extinguish the flame!" data-bn="💡 মোমবাতিতে সরাসরি ট্যাপ করেও নেভাতে পারবি!">
+              💡 You can also tap each candle directly to extinguish the flame!
+            </p>
+          </div>
+
+          <div class="action-btn-group hidden" id="cut-cake-actions">
+            <button class="btn btn-primary btn-sparkle" id="cut-cake-btn">
+              <span data-en="🔪 Cut the Birthday Cake!" data-bn="🔪 এবার কেকটা কাট! (Cut Cake)">🔪 Cut the Birthday Cake!</span>
+            </button>
+            <button class="btn btn-golden hidden" id="feed-cake-btn">
+              <span data-en="🍰 Feed Sneha a Slice!" data-bn="🍰 স্নেহার মুখে কেক তুলে দে! (Feed Sneha)">🍰 Feed Sneha a Slice!</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Celebration Banner & Wish Popup -->
+        <div class="cake-wish-banner glass-panel hidden" id="cake-wish-banner">
+          <div class="confetti-popper-icon">🎉 🥳 🎂 👑</div>
+          <h3 class="wish-title">Happy Birthday To My Queen Sneha! ❤️</h3>
+          <p class="wish-sub" data-en="“May your sweet, radiant smile shine forever bright. My only mission in life is to keep you happy, cherished, and protected every single day.”" data-bn="“আজকের এই মিষ্টি দিনে ভগবানের কাছে একটাই চাওয়া—তোর মুখের মিষ্টি হাসিটা যেন সারাজীবন এমনই অমলিন থাকে! পৃথিবীর সমস্ত সুখ আর ভালোবাসা যেন তোর পায়ে এনে দিতে পারি।”">
+            “May your sweet, radiant smile shine forever bright. My only mission in life is to keep you happy, cherished, and protected every single day.”
+          </p>
+        </div>
+
+        <div class="stage-nav-buttons">
+          <button class="btn btn-outline nav-prev" data-prev="4" data-en="⬅ Previous Stage" data-bn="⬅ আগের পৃষ্ঠা">⬅ Previous Stage</button>
+          <button class="btn btn-primary nav-next" data-next="6" data-en="Next Surprise: Secret Love Letter ➡" data-bn="পরের সারপ্রাইজ: মনের গোপন চিঠি ➡">Next Surprise: Secret Love Letter ➡</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= STAGE 6: THE GRAND LOVE LETTER & WISHES ================= -->
+    <section class="stage-screen" id="stage-6" data-index="6">
+      <div class="stage-inner letter-stage">
+        <div class="letter-header text-center">
+          <span class="badge-tag" data-en="From the Depth of My Heart 💌" data-bn="একান্ত মনের কথা 💌">From the Depth of My Heart 💌</span>
+          <h2 class="section-title" data-en="A Handcrafted Birthday Love Letter" data-bn="একান্ত মনের এক টুকরো প্রেমপত্র">A Handcrafted Birthday Love Letter</h2>
+          <p class="section-desc" data-en="The deepest thoughts I might not always say out loud, penned down forever on this parchment..." data-bn="যা কোনোদিন হয়তো সামনাসামনি মুখ ফুটে বলা হয়নি, আজ তা লিখে দিলাম এই পাতায়...">
+            The deepest thoughts I might not always say out loud, penned down forever on this parchment...
+          </p>
+        </div>
+
+        <!-- Royal Parchment Letter -->
+        <div class="parchment-letter-wrapper">
+          <div class="parchment-paper" id="parchment-paper">
+            <div class="wax-seal-stamp">
+              <span class="stamp-heart">❤️</span>
+              <span class="stamp-text">S & G</span>
+            </div>
+
+            <!-- English Letter Version -->
+            <div class="letter-version-en">
+              <div class="letter-date">October 23rd • Happy Birthday, My Love</div>
+
+              <div class="letter-greeting">
+                My Dearest Sneha,
+              </div>
+
+              <div class="letter-body">
+                <p>
+                  I’ve never been someone who writes long, poetic letters. But today, on your birthday, my heart is overflowing with all the unsaid words that live inside me every single day. Looking back to the day we first met, I never could have imagined how quickly you would become the most precious, indispensable part of my existence.
+                </p>
+                <p>
+                  Whenever you drape a saree and walk toward me, believe me—my heart genuinely skips a beat. The way you struggle with your pleats, tuck your hair behind your ear, and that tiny glittering nose ring... you look like pure poetry without even trying. And your sweet little pouts, your dramatic fake anger when you pretend not to care just to see if I’ll come comfort you—I am hopelessly, helplessly in love with every little piece of your personality.
+                </p>
+                <p>
+                  Every moment spent with you is a blessing I don't take for granted. You aren't just the love of my life, Sneha—you are my best friend, my calm in every storm, and the safest place I know. After the longest, most exhausting days, hearing your voice over the phone makes all my worries dissolve into thin air.
+                </p>
+                <p>
+                  On this special birthday, my only wish for you is that this radiant, innocent smile never fades from your face. Whatever hurdles life throws at us, I promise to hold your hand tighter through every storm. I promise to protect your happiness, wipe away any tear that falls, and love you more deeply with each passing sunrise.
+                </p>
+                <p class="letter-poetry">
+                  “You are the morning sun that wakes my soul, the evening star so bright,<br>
+                  With you, my darling Sneha, my whole world is filled with light!” 🌹
+                </p>
+              </div>
+
+              <div class="letter-sign">
+                <span>Forever & unconditionally yours,</span>
+                <strong>The Guy Who Loves You Most ❤️</strong>
+              </div>
+            </div>
+
+            <!-- Bengali Letter Version (Toggled dynamically) -->
+            <div class="letter-version-bn hidden">
+              <div class="letter-date">২৩শে অক্টোবর • ভালোবাসার জন্মদিন</div>
+
+              <div class="letter-greeting">
+                আমার সবচেয়ে আদরের স্নেহা,
+              </div>
+
+              <div class="letter-body">
+                <p>
+                  জানিস স্নেহা, চিঠি লেখাটা আমার কোনোদিনই ঠিকঠাক আসে না। কিন্তু আজ তোর জন্মদিনে মনে হলো, বুকের ভেতর যে না-বলা কথাগুলো সারাক্ষণ উথাল-পাথাল করে, সেগুলো অন্তত তোকে একটা বার মন খুলে জানিয়ে দিই। তোকে যেদিন প্রথম দেখেছিলাম, তখন সত্যি বুঝতে পারিনি যে তুই এত তাড়াতাড়ি আমার জীবনের সবচেয়ে দামি আর সবচেয়ে প্রিয় মানুষ হয়ে উঠবি।
+                </p>
+                <p>
+                  তুই যখন শাড়ি পরে আমার সামনে এসে দাঁড়াস, বিশ্বাস কর—আমার বুকের স্পন্দন থেমে যাওয়ার জোগাড় হয়! শাড়ির কুঁচি ঠিক করা, কানের ঝুমকোটা বারবার ঠিক করে নেওয়া আর নাকে ওই একরত্তি নাকছাবি... তুই কোনো মেকআপ ছাড়াই এত স্নিগ্ধ, এত মিষ্টি! তোর ওই ছোট্ট ছোট্ট অভিমান, না খেয়ে গাল ফুলিয়ে বসে থাকা, আর তারপর আড়চোখে দেখা আমি তোকে মানাতে আসছি কি না—তোর এই প্রতিটা পাগলামিকে আমি পাগলের মতো ভালোবাসি।
+                </p>
+                <p>
+                  তোর সাথে কাটানো প্রতিটা পল আমার কাছে আশীর্বাদের মতো। তুই শুধু আমার ভালোবাসার মানুষ নোস রে, তুই আমার সবচেয়ে ভালো বন্ধু, আমার জীবনের সবচেয়ে নিরাপদ আশ্রয়। সারাদিনের ব্যস্ততা আর ক্লান্তির পর যখন তোর সাথে কথা বলি, যখন তোর মিষ্টি গলাটা শুনি—আমার সমস্ত ক্লান্তি এক নিমেষেই কর্পূরের মতো উড়ে যায়।
+                </p>
+                <p>
+                  আজ তোর এই বিশেষ দিনে ঈশ্বরের কাছে একটাই প্রার্থনা করি—তোর মুখে যেন এই নিষ্পাপ হাসিটা আজীবন এমনই অমলিন থাকে। জীবনের যত ঝড়-ঝাপটাই আসুক না কেন, আমি কথা দিচ্ছি তোর হাতটা শক্ত করে ধরে সারাজীবন তোর পাশে থাকব। তোর চোখে কোনোদিন দুঃখের জল আসতে দেব না, আর এলেও আমি নিজের হাতে তা মুছে দেব।
+                </p>
+                <p class="letter-poetry">
+                  “তুই আমার সকালের মিষ্টি রোদ, তুই আমার রাতের তারা,<br>
+                  তোর ভালোবাসায় মাতাল আমি, তোকে ছাড়া যে দিশেহারা!” 🌹
+                </p>
+              </div>
+
+              <div class="letter-sign">
+                <span>চিরকালের জন্য শুধুই তোর,</span>
+                <strong>তোর ভালোবাসার প্রিয় মানুষটা ❤️</strong>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Interactive "Reasons Why I Love Sneha" Jar -->
+        <div class="love-jar-section glass-panel">
+          <div class="jar-header text-center">
+            <h3 data-en="🍯 Sweet Reasons Why I Love Sneha (The Love Jar)" data-bn="🍯 তোকে ভালোবাসার মিষ্টি কারণগুলো (Love Reasons Jar)">
+              🍯 Sweet Reasons Why I Love Sneha (The Love Jar)
+            </h3>
+            <p data-en="Tap the button to discover why you are my absolute favorite person!" data-bn="বটনে চাপ দে আর দেখে নে কেন তুই আমার এতো প্রিয়!">
+              Tap the button to discover why you are my absolute favorite person!
+            </p>
+          </div>
+          <div class="love-jar-interactive text-center">
+            <div class="jar-bubble" id="jar-bubble-text">
+              “Click the button to reveal another reason! 💖”
+            </div>
+            <button class="btn btn-golden btn-sm" id="pick-reason-btn">
+              <span data-en="✨ Tell Me Another Reason! 💖" data-bn="✨ আরেকটি কারণ বল! 💖">✨ Tell Me Another Reason! 💖</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Final Wishes & Grand Fireworks Finale -->
+        <div class="grand-finale-card text-center">
+          <h2 class="grand-wishes-text" data-en="May All Your Dreams Come True, My Sweet Sneha! 🌟" data-bn="May All Your Dreams Come True, My Sweet Sneha! 🌟">
+            May All Your Dreams Come True, My Sweet Sneha! 🌟
+          </h2>
+          <div class="finale-buttons">
+            <button class="btn btn-primary btn-sparkle" id="grand-fireworks-btn">
+              <span data-en="🎆 Launch Midnight Fireworks! (Fireworks)" data-bn="🎆 আকাশজুড়ে রঙের আলো জ্বালাও! (Fireworks)">🎆 Launch Midnight Fireworks! (Fireworks)</span>
+            </button>
+            <button class="btn btn-golden" id="replay-journey-btn">
+              <span data-en="🔄 Replay Our Journey from Beginning" data-bn="🔄 আবার প্রথম থেকে শুরু করবি?">🔄 Replay Our Journey from Beginning</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="stage-nav-buttons">
+          <button class="btn btn-outline nav-prev" data-prev="5" data-en="⬅ Previous Stage: Cake Cutting" data-bn="⬅ আগের পৃষ্ঠা: কেক কাটিং">⬅ Previous Stage: Cake Cutting</button>
+          <button class="btn btn-golden" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" data-en="⬆ Back to Top" data-bn="⬆ শীর্ষে ফিরে যান">⬆ Back to Top</button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Photo Lightbox Modal -->
+  <div class="photo-lightbox-modal hidden" id="photo-modal" aria-hidden="true">
+    <div class="lightbox-backdrop" id="modal-backdrop"></div>
+    <div class="lightbox-content glass-panel">
+      <button class="modal-close-btn" id="modal-close" title="Close">✕</button>
+      <div class="lightbox-img-wrap">
+        <img src="" alt="Sneha Photo" id="modal-img">
+      </div>
+      <div class="lightbox-info">
+        <h4 class="modal-photo-title" id="modal-title">Gorgeous Sneha</h4>
+        <p class="modal-photo-caption" id="modal-caption">You look ethereal in saree!</p>
+        <div class="modal-nav">
+          <button class="btn btn-xs btn-outline" id="modal-prev-btn" data-en="◀ Previous Photo" data-bn="◀ আগের ছবি">◀ Previous Photo</button>
+          <span class="modal-counter" id="modal-counter">1 / 35</span>
+          <button class="btn btn-xs btn-outline" id="modal-next-btn" data-en="Next Photo ▶" data-bn="পরের ছবি ▶">Next Photo ▶</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom Floating Navigation Dock -->
+  <nav class="bottom-dock" aria-label="Quick Navigation">
+    <button class="dock-btn" id="dock-prev-btn" title="Previous Stage" data-en="◀ Prev" data-bn="◀ আগে">◀ Prev</button>
+    <div class="dock-title-indicator">
+      <span id="dock-stage-name" data-en="1. Surprise" data-bn="১. সারপ্রাইজ">1. Surprise</span>
+    </div>
+    <button class="dock-btn active" id="dock-next-btn" title="Next Stage" data-en="Next ▶" data-bn="পরে ▶">Next ▶</button>
+  </nav>
+
+  <script src="script.js"></script>
+</body>
+</html>
